@@ -1,6 +1,7 @@
 import pygame as pg
 from random import randrange
 
+pg.init()
 
 window = 1000
 tile_size = 50
@@ -16,9 +17,10 @@ food = snake.copy()
 food.center = get_random_position()
 screen = pg.display.set_mode([window]*2)
 clock = pg.time.Clock()
+main = True
+end = False
 
-
-while True:
+while main == True:
     for event in pg.event.get():
         if event.type == pg.quit:
             exit()
@@ -47,22 +49,34 @@ while True:
         segments = segments[-length:]
     if segments.count(snake) == 2:
         print('self collision')
-        exit()
+        end = True
+        main = False
     if snake.x < 0 or snake.y < 100:
         if len(segments) > 1:
             print('outside of the boundaries')
-            exit()
+            end = True
+            main = False
         else:
             snake.center = get_random_position()
     if snake.x > 1000 or snake.y > 850:
         if len(segments) > 1:
             print('outside of the boundaries')
-            exit()
+            end = True
+            main = False
         else:
             snake.center = get_random_position()
     if food.x < 0 or food.y < 100 or food.x > 1000 or food.y > 850:
         food.center = get_random_position()
     if segments.count(food) > 0 and food.center != snake.center:
         food.center = get_random_position()
+    pg.display.flip()
+    clock.tick(60)
+
+
+while end:
+    screen.fill('black')
+    font = pg.font.SysFont('Calibri', 50, False, False)
+    text = font.render('GAME OVER', True, (255,255,255))
+    screen.blit(text,[500 - 25*4.5,500-25])
     pg.display.flip()
     clock.tick(60)
