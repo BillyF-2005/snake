@@ -75,8 +75,8 @@ while main == True:
 
 while end:
     screen.fill('black')
-    font = pg.font.SysFont('Calibri', 50, False, False)
+    font = pg.font.SysFont('Calibri', 75, False, False)
     text = font.render('GAME OVER', True, (255,255,255))
-    screen.blit(text,[500 - 25*4.5,500-25])
+    screen.blit(text,[500 - 75*2.25,500-75*0.5])
     pg.display.flip()
     clock.tick(60)
