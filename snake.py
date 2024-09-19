@@ -52,14 +52,14 @@ while main == True:
         end = True
         main = False
     if snake.x < 0 or snake.y < 100:
-        if len(segments) > 1:
+        if snake_dir != (0,0):
             print('outside of the boundaries')
             end = True
             main = False
         else:
             snake.center = get_random_position()
     if snake.x > 1000 or snake.y > 850:
-        if len(segments) > 1:
+        if snake_dir != (0,0):
             print('outside of the boundaries')
             end = True
             main = False
