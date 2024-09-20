@@ -34,6 +34,8 @@ while main == True:
                 snake_dir = [tile_size, 0]
             if (event.key == pg.K_a) and snake_dir != [tile_size, 0]:
                 snake_dir = [-tile_size, 0]
+            if (event.key == pg.K_ESCAPE):
+                    exit()
     
     screen.fill('black')
     if food.center == snake.center:
@@ -75,8 +77,12 @@ while main == True:
 
 while end:
     screen.fill('black')
-    font = pg.font.SysFont('Calibri', 75, False, False)
+    font = pg.font.SysFont('Calibri', 75, True, False)
     text = font.render('GAME OVER', True, (255,255,255))
     screen.blit(text,[500 - 75*2.25,500-75*0.5])
+    for event in pg.event.get():
+            if event.type == pg.KEYDOWN:
+                if (event.key == pg.K_ESCAPE):
+                    exit()
     pg.display.flip()
     clock.tick(60)
