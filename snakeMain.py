@@ -25,8 +25,8 @@ playAgainPressed = False
 click = False
 mousePos = (0,0)
 
-exitButton = button(500,600,50,'red',"EXIT")
-playAgain = button(500,500,50,'green',"PLAY AGAIN")
+exitButton = button(screen,500,600,50,'red',"EXIT")
+playAgain = button(screen,500,500,50,'green',"PLAY AGAIN")
 
 while True:
     while main == True:
